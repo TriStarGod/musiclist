@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // route files when a client requests a page
 var index = require('./routes/index');
-var users = require('./routes/users');
 // instances of express server
 var app = express();
 
@@ -26,7 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // which route files to use
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler; inline middleware;
 app.use(function(req, res, next) {
