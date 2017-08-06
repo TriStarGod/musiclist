@@ -22,18 +22,19 @@ module.exports = {
     filename: 'javascript/build.js',
     // resolves path for public and javascripts folder
     path: '/',
+    // publicPath will serve all files from the specified directory
     publicPath: '/',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_compoents|public\/)/,
+        exclude: /(node_modules|public\/)/,
         loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules|bower_compoents|public\/)/,
+        exclude: /(public\/)/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader',
@@ -41,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: /(node_modules|bower_compoents|public\/)/,
+        exclude: /(node_modules|public\/)/,
         use: ExtractTextPlugin.extract({
           use: [{
             loader: 'css-loader',

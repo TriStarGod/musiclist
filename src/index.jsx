@@ -2,6 +2,9 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import './css/musiclist.scss';
+
 // import TestComponent from './testcomponent';
 import Base from './components/Base';
 

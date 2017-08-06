@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "body-parser": "~1.15.2",
+    "bootstrap": "4.0.0-alpha.6",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
@@ -22,8 +23,11 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
+    "reactstrap": "^4.8.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
@@ -33,6 +37,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
     "eslint": "^4.4.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -45,6 +50,7 @@
     "nodemon": "^1.11.0",
     "react-hot-loader": "3.0.0-beta.6",
     "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "supertest": "^3.0.0",
     "webpack": "^3.4.1",
     "webpack-dev-middleware": "^1.12.0",
