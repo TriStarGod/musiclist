@@ -6,8 +6,8 @@
     "jest"
   ],
   "env": {
-    "browser": true,
     "jest": true,
+    "browser": true,
     "node": true
   },
   "settings": {
