@@ -19,7 +19,8 @@
       {
         "argsIgnorePattern": "next"
       }
-    ]
+    ],
+    "react/prop-types": [0]
     // "compat/compat": 2
     // ,"indent": [2, "tab"]
   }

@@ -102,9 +102,9 @@ app.use(webpackHotMiddleware(webpackCompiler, {
 // server anything in the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 // which route files to use
-app.use('/', index);
 app.use('/api', api);
 app.use('/api/users', users);
+app.use('/*', index); // would make error handling useless
 
 // catch 404 and forward to error handler; inline middleware;
 app.use((req, res, next) => {

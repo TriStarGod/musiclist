@@ -2,12 +2,13 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
-import TestComponent from './testcomponent';
+// import TestComponent from './testcomponent';
+import Base from './components/Base';
 
-render(
-  <TestComponent/>,
-  document.querySelector('#app'),
-);
+// render(
+//   <TestComponent/>,
+//   document.querySelector('#app'),
+// );
 const renderApp = (Component) => {
   render(
     <AppContainer>
@@ -17,11 +18,15 @@ const renderApp = (Component) => {
   );
 };
 // run first time app runs
-renderApp(TestComponent);
+// renderApp(TestComponent);
+renderApp(Base);
 
 // called when a change happens
 if (module && module.hot) {
-  module.hot.accept('./testcomponent', () => {
-    renderApp(TestComponent);
+  // module.hot.accept('./testcomponent', () => {
+  //   renderApp(TestComponent);
+  // });
+  module.hot.accept('./components/Base', () => {
+    renderApp(Base);
   });
 }
