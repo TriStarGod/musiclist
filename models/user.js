@@ -11,6 +11,7 @@ const User = new Schema({
   firstName: String,
   lastName: String,
 });
+
 // connects mongoose to passport and user
 User.plugin(passportLocalMongoose);
 

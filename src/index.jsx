@@ -1,10 +1,14 @@
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { AppContainer } from 'react-hot-loader';
-import React from 'react';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
+// CSS from a module
 import 'bootstrap/dist/css/bootstrap.css';
+// CSS from a local file
 import './css/musiclist.scss';
-
+// Default export from a local file
+import Store from './store';
 // import TestComponent from './testcomponent';
 import Base from './components/Base';
 
@@ -15,7 +19,9 @@ import Base from './components/Base';
 const renderApp = (Component) => {
   render(
     <AppContainer>
-      <Component headline="Test Headline" count={12345} showCount />
+      <Provider store={Store}>
+        <Component />
+      </Provider>
     </AppContainer>,
     document.querySelector('#app'),
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from './shared/Header';
 import HomePage from './home/HomePage';
@@ -10,11 +11,12 @@ import LoginPage from './account/LoginPage';
 // the exact prop in the HomePage is used to only activate it for / and not /a
 // by not setting the prop exact, fuzzy matches can occur 
 // like /account/profile/some/thing would work for the second route
-export default function Base() {
+function Base(props) {
   return (
     <Router>
       <div className="wrapper">
         <Header username="anonymous" />
+        <p>{props.progress}</p>
         <section className="page-content container-fluid">
           <Route exact path="/" component={HomePage} />
           <Route exact path="/account/login" component={LoginPage} />
@@ -24,3 +26,14 @@ export default function Base() {
     </Router>
   );
 }
+
+// maps the state to the props of the component
+function mapStateToProps(state) {
+  return {
+    ...state,
+  };
+}
+// connect binds the app state to the component's props
+// this won't overwrite other props sent from higher level components
+// this will also cause the component to re-render on every app state change
+export default connect(mapStateToProps)(Base);

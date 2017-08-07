@@ -35,18 +35,21 @@ const passport = require('passport');
 // an approach for connecting express to our auth setup
 const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
-const User = require('./models/user');
-// route files when a client requests a page
-const index = require('./routes/index');
-const api = require('./routes/api/index');
-const users = require('./routes/api/users');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpack = require('webpack');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpackDevMiddleware = require('webpack-dev-middleware');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpackHotMiddleware = require('webpack-hot-middleware');
+
 const webpackConfig = require('./webpack.config');
+const User = require('./models/user');
+// route files when a client requests a page
+const index = require('./routes/index');
+const api = require('./routes/api/index');
+const users = require('./routes/api/users');
+const authentication = require('./routes/api/authentication');
+
 // instances of express server
 const app = express();
 
@@ -73,13 +76,9 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false,
 }));
-
-// configure passport
+// initialize and setup passpoert
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // Webpack Server
 // creates a webpack based on config
@@ -101,10 +100,17 @@ app.use(webpackHotMiddleware(webpackCompiler, {
 
 // server anything in the public folder
 app.use(express.static(path.join(__dirname, 'public')));
-// which route files to use
+
+// route files
 app.use('/api', api);
 app.use('/api/users', users);
+app.use('/api/authentication', authentication);
 app.use('/*', index); // would make error handling useless
+
+// configure passport
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // catch 404 and forward to error handler; inline middleware;
 app.use((req, res, next) => {
